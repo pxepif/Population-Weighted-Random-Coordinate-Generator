@@ -1,18 +1,9 @@
-import random
-import math
+
 import rasterio
 import pickle
 from rasterio.windows import Window
-import time
-import multiprocessing
 import numpy as np
-import certifi
-import ssl
-import os
-import datetime
-from shapely.geometry import Point, shape
 import geopandas as gpd
-from global_land_mask import globe
 
 def RandomLandCoordPopWeighted():
     with open("cum_pop_pickle.pkl", "rb") as infile:
