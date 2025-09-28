@@ -14,6 +14,8 @@ The 'ppp_2020_1km_Aggregated.tif' can be downloaded from https://hub.worldpop.or
 
 Licensed under Creative Commons Attribution (CC BY 4.0).
 
+
+
 Place both of these files in the same directory where you are running the code (or update the paths in the code if stored elsewhere)
 
 Note: the PopWeightedRandomCoords.py file can take up to a minute to generate random coordinates if the random numbers generated make it so the round is population weighted and cannot be in Asia or Africa.
