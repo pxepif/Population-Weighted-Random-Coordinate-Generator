@@ -28,9 +28,9 @@ def popWeighted():
         print(random_pop)
         row = np.searchsorted(cum_pop, random_pop)
         print(cum_pop[row-1], cum_pop[row])
-        full_raster_flat = data.flatten()
         flat = data.flatten()
         flat[flat < 0] = 0
+        flat_prob = flat / flat.sum()
 
         r_number2 = random.random()
         print("Rnumber2: ", r_number2)
@@ -40,7 +40,7 @@ def popWeighted():
 
             while True:
                 check = False
-                idx = np.random.choice(len(flat), p=flat/flat.sum())
+                idx = np.random.choice(len(flat), p=flat_prob)
                 row, col = divmod(idx, dataset.width)
                 lon, lat = dataset.xy(row, col)
                 print("Lat, lon: ", lat, lon)
@@ -63,7 +63,7 @@ def popWeighted():
             #end while
         else:
             # Weighted random choice directcly
-            idx = np.random.choice(len(flat), p=flat/flat.sum())
+            idx = np.random.choice(len(flat), p=flat_prob)
             row, col = divmod(idx, dataset.width)
             lat, lon = dataset.xy(row, col)
             print("Coordinates: ", lon, lat)
@@ -76,7 +76,7 @@ def notPopWeighted():
             lon = random.uniform(-180, 180)
             print(lat)
             print(lon)
-            if (globe.is_land(lat, lon)): #and lat > -60: (antarctica is eligible now)
+            if (globe.is_land(lat, lon)): #and lat > -60: (uncomment to avoid Antarctica)
                 return (lat, lon)
 
 def RandomLandCoord():
